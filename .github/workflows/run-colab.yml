@@ -6,6 +6,7 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -14,8 +15,10 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install papermill
-        run: pip install papermill
+      - name: Install dependencies
+        run: |
+          pip install papermill ipykernel notebook
+          python -m ipykernel install --user --name python3
 
       - name: Run notebook
         run: |
